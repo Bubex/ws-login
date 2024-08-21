@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: poker-backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: poker-backend
+  template:
+    metadata:
+      labels:
+        app: poker-backend
+    spec:
+      containers:
+      - name: poker-backend
+        image: poker-backend:latest
+        ports:
+        - containerPort: 8080
