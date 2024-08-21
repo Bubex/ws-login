@@ -65,6 +65,14 @@ jobs:
       run: |
         echo "${{ secrets.KUBECONFIG }}" > $HOME/.kube/config
 
+    - name: List files in root directory
+      run: ls -la
+
+    - name: Deploy to Kubernetes
+      run: |
+        kubectl apply -f deployment.yaml
+        kubectl apply -f service.yaml
+
     - name: Deploy to Kubernetes
       run: |
         kubectl apply -f deployment.yaml

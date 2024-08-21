@@ -1,3 +1,4 @@
+name: ws-login
 services:
   app:
     build: .
