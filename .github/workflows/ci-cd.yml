@@ -46,6 +46,9 @@ jobs:
       with:
         version: v1.22.0
 
+    - name: Create .kube directory
+      run: mkdir -p $HOME/.kube
+
     - name: Set KUBECONFIG
       env:
         KUBECONFIG: ${{ secrets.KUBECONFIG }}
