@@ -5,12 +5,12 @@ const users = require('../models/user');
 class AuthService {
     async login(username, password) {
         const user = users.find(u => u.username === username);
-        if (!user) throw new Error('Usuário não encontrado.');
+        if (!user) throw new Error('User not found.');
 
         const isPasswordValid = await bcrypt.compare(password, user.password);
-        if (!isPasswordValid) throw new Error('Senha inválida.');
+        if (!isPasswordValid) throw new Error('Wrong password');
 
-        return { message: 'Login bem-sucedido', user: { username: user.username } };
+        return { message: 'Successful login', user: { username: user.username } };
     }
 }
 
