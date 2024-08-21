@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: poker-backend
+  name: ws-login
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: poker-backend
+      app: ws-login
   template:
     metadata:
       labels:
-        app: poker-backend
+        app: ws-login
     spec:
       containers:
-      - name: poker-backend
-        image: poker-backend:latest
+      - name: ws-login
+        image: ws-login:latest
         ports:
         - containerPort: 8080

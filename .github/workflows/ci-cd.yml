@@ -41,6 +41,18 @@ jobs:
     needs: build
 
     steps:
+    - name: Set up aws-cli
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y awscli
+        aws --version
+
+    - name: Configure AWS credentials
+      run: |
+        aws configure set aws_access_key_id ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws configure set default.region sa-east-1
+
     - name: Set up kubectl
       uses: azure/setup-kubectl@v1
       with:
@@ -50,9 +62,8 @@ jobs:
       run: mkdir -p $HOME/.kube
 
     - name: Set KUBECONFIG
-      env:
-        KUBECONFIG: ${{ secrets.KUBECONFIG }}
-      run: echo "${{ secrets.KUBECONFIG }}" > $HOME/.kube/config
+      run: |
+        echo "${{ secrets.KUBECONFIG }}" > $HOME/.kube/config
 
     - name: Deploy to Kubernetes
       run: |
