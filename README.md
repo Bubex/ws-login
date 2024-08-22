@@ -39,11 +39,7 @@ Antes de iniciar, você precisará ter as seguintes ferramentas instaladas em su
 
 Configure as seguintes variáveis de ambiente:
 
-- `DOCKER_HUB_USERNAME`: Seu nome de usuário no Docker Hub.
-- `DOCKER_HUB_PASSWORD`: Sua senha ou token de acesso no Docker Hub.
-- `AWS_ACCESS_KEY_ID`: Seu Access Key ID da AWS.
-- `AWS_SECRET_ACCESS_KEY`: Sua Secret Access Key da AWS.
-- `KUBECONFIG`: Configuração do KUBECONFIG para acessar o cluster Kubernetes.
+- `RENDER_API_KEY`: Sua API KEY do Render
 
 As variáveis de ambiente podem ser configuradas localmente usando um arquivo `.env` ou diretamente nas configurações do GitHub Actions.
 
@@ -67,33 +63,11 @@ O servidor WebSocket estará disponível na porta 8080.
 
 ## Deploy
 
-O projeto está configurado para ser implantado automaticamente em um cluster Kubernetes usando GitHub Actions. O pipeline de CI/CD é configurado para:
+O projeto está configurado para ser implantado automaticamente usando GitHub Actions. O pipeline de CI/CD é configurado para:
 
 1. Realizar o build e teste da aplicação.
-2. Criar e enviar a imagem Docker para o Docker Hub.
-3. Implantar a aplicação no Kubernetes.
+2. Realizar o deploy via Render.
 
-### Acesso à Aplicação
-
-Após o deploy, a aplicação estará disponível através do Load Balancer provisionado pelo Kubernetes. Você pode obter o endereço com:
-
-```bash
-kubectl get svc
-```
-
-Acesse a aplicação via WebSocket usando:
-
-```bash
-ws://<external-ip>:8080
-```
-
-## Monitoramento e Logs
-
-Para verificar os logs dos pods:
-
-```bash
-kubectl logs <nome-do-pod>
-```
 
 ## Testes
 
