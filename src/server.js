@@ -8,12 +8,13 @@ const authRoutes = require('./routes/auth-routes');
 const app = express();
 const server = http.createServer(app);
 const wss = new WebSocket.Server({ server });
+const PORT = process.env.PORT || 8080;
 
 app.use(express.json());
 app.use('/auth', authRoutes);
 
 rpc.initialize(wss);
 
-server.listen(8080, () => {
-    console.log('Servidor rodando na porta 8080');
+server.listen(PORT, () => {
+    console.log(`Servidor rodando na porta ${PORT}`);
 });
