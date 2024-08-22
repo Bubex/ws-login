@@ -1,6 +1,6 @@
 # WS Login
 
-Este projeto é um backend para uma aplicação de serviço de login via WebSocket. Ele é implementado em Node.js e implantado em um cluster Kubernetes usando AWS EKS.
+Este projeto é um backend para uma aplicação de serviço de login via WebSocket. Ele é implementado em Node.js e implantado usando uma pipeline de CI/CD via Github Actions com o deploy no Render.
 
 ## Funcionalidades
 
@@ -13,10 +13,7 @@ Este projeto é um backend para uma aplicação de serviço de login via WebSock
 Antes de iniciar, você precisará ter as seguintes ferramentas instaladas em sua máquina:
 
 - [Node.js](https://nodejs.org/): Versão 16 ou superior
-- [Docker](https://www.docker.com/): Para criação de imagens Docker
-- [Kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/): Para interagir com o cluster Kubernetes
-- [AWS CLI](https://aws.amazon.com/cli/): Para interagir com os serviços da AWS
-- [Eksctl](https://eksctl.io/): Para gerenciar o cluster EKS
+- [Docker](https://www.docker.com/): Caso queira executar o projeto localmente usando docker
 
 ## Instalação
 
@@ -48,7 +45,7 @@ As variáveis de ambiente podem ser configuradas localmente usando um arquivo `.
 Para criar a imagem Docker localmente:
 
 ```bash
-docker build -t <nome_da_imagem> .
+docker build -t ws-login .
 ```
 
 ### Executando Localmente
